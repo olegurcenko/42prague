@@ -1,6 +1,6 @@
 TARGET = libft.a
 
-files = ft_strlen ft_atoi ft_substr
+files = ft_strlen ft_atoi ft_substr ft_strjoin
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

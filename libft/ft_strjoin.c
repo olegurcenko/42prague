@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 17:23:46 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/21 21:03:29 by oleg             ###   ########.fr       */
+/*   Created: 2023/10/21 20:16:41 by oleg              #+#    #+#             */
+/*   Updated: 2023/10/21 21:04:28 by oleg             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,33 @@ static size_t	ft_strlen(const char *str)
 	return (i + 1);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static int	concat(char *res, const char *src)
 {
-	char	*result;
-	size_t	i;
+	int	i;
 
 	i = 0;
-	result = malloc((len + 1) * sizeof(char));
-	if ((result == NULL) || (start > ft_strlen(s)))
-	{
-		return (NULL);
-	}
-	while (s[start] != 0 && i != len)
-	{
-		result[i] = s[start];
-		i++;
-		start ++;
-	}
-	result[i] = 0;
-	return (result);
+	while (*src != '\0')
+		res[i++] = *src ++;
+	res[i] = '\0';
+	return (i);
 }
 
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*result;
+	int		i;
+
+	i = 0;
+	result = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	i += concat(result + i, s1);
+	i += concat(result + i, s2);
+	return (result);
+}
 //int main()
 //{
-//    char *b = ft_substr("hello how are you?", 3, 10);
+//    char *b = ft_strjoin("hello how ", "are you?");
 
 //    if (b != NULL)
 //    {
