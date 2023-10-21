@@ -6,21 +6,19 @@
 /*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 21:56:51 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/21 22:26:04 by oleg             ###   ########.fr       */
+/*   Updated: 2023/10/21 22:47:13 by oleg             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
-int	skip(char const *s1, char const *set)
+static int	skip(char const *s1, char const *set)
 {
 	int	i;
 
 	i = 0;
-	while (s1[i] == * set)
+	while (s1[i] == *set)
 		i++;
-	//printf("%d", i);
 	return (i);
 }
 
@@ -30,33 +28,64 @@ static int	ft_strlen(const char *str)
 
 	i = 0;
 	while (str[i] != '\0')
-	{
 		i++;
-	}
-	return (i + 1);
+	return (i);
 }
 
-int	skip_end(char const *s1, char const *set)
+static int	skip_end(char const *s1, char const *set)
 {
 	int	len;
 	int	i;
 
 	i = 0;
-	len = ft_strlen(s1) - 2;
-	while (s1[len] == *set)
+	len = ft_strlen(s1) - 1;
+	while (len >= 0 && s1[len] == *set)
 	{
 		len --;
 		i ++;
 	}
-	//printf("%d", i);
 	return (i);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
+	int		i;
+	int		result_len;
 
-	result = malloc(sizeof(char) * (ft_strlen(s1) - skip(s1, set) - skip_end(s1, set)));
-	printf("%d", (ft_strlen(s1) - skip(s1, set) - skip_end(s1, set)));
-	return result;
+	result_len = ft_strlen(s1) - skip(s1, set) - skip_end(s1, set);
+	if (result_len <= 0)
+		return (NULL);
+	i = 0;
+	result = malloc(result_len + 1);
+	if (result == NULL)
+		return (NULL);
+	while (i < result_len)
+	{
+		result[i] = s1[skip(s1, set) + i];
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }
+
+//int main()
+//{
+//    const char *original = "   hello how are you   ";
+//    const char *set = " ";
+
+//    char *trimmed = ft_strtrim(original, set);
+
+//    if (trimmed != NULL)
+//    {
+//        printf("Original: \"%s\"\n", original);
+//        printf("Trimmed: \"%s\"\n", trimmed);
+//        free(trimmed); // Free the allocated memory
+//    }
+//    else
+//    {
+//        printf("Error: Unable to allocate memory for trimmed string.\n");
+//    }
+
+//    return 0;
+//}

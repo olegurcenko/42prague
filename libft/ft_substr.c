@@ -6,12 +6,11 @@
 /*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:23:46 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/21 21:03:29 by oleg             ###   ########.fr       */
+/*   Updated: 2023/10/21 22:47:17 by oleg             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 static size_t	ft_strlen(const char *str)
 {
