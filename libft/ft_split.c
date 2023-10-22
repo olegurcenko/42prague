@@ -6,53 +6,66 @@
 /*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:47:21 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/22 13:58:55 by oleg             ###   ########.fr       */
+/*   Updated: 2023/10/22 22:08:22 by oleg             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//todo make null checking in 60 line
 #include <stdlib.h>
 #include <stdio.h>
 
-int	isSep(char c, char charset)
+static int	is_sep(char c, char charset)
 {
 	if (c == charset)
 		return (1);
 	return (0);
 }
 
-char *strsub(char const *s, int len)
+static char	*strsub(char const *s, int len)
 {
-	char *res = malloc((len + 1) * sizeof(char));
-	int i = 0;
-	for (; i < len; i++)
+	char	*res;
+	int		i;
+
+	res = malloc((len + 1) * sizeof(char));
+	i = 0;
+	while (i < len)
+	{
 		res[i] = s[i];
+		i++;
+	}
 	res[i] = 0;
-	return res;
+	return (res);
 }
 
-char **ft_split(char const *s, char c)
+static void	to_zero(int *start, int *idx, int *i)
 {
-	char **res;
-	int n;
-	int idx;
-	int start;
+	*start = 0;
+	*idx = 0;
+	*i = 0;
+}
 
+char	**ft_split(char const *s, char c)
+{
+	char	**res;
+	int		n;
+	int		idx;
+	int		start;
+	int		i;
+
+	i = 0;
 	n = 1;
-	int i = 0;
 	while (s[i++])
-		if (isSep(s[i], c))	
+		if (is_sep(s[i], c))
 			n++;
 	res = malloc((n + 1) * sizeof(char *));
-	start = 0;
-	idx = 0;
-	i = 0;
+	to_zero(&start, &idx, &i);
 	while (s[i++])
 	{
-		if (!isSep(s[i], c) && i > 0 && isSep(s[i - 1], c))
+		if (!is_sep(s[i], c) && i > 0 && is_sep(s[i - 1], c))
 			start = i;
-		if (isSep(s[i], c) && i > 0 && !isSep(s[i - 1], c))
+		if (is_sep(s[i], c) && i > 0 && !is_sep(s[i - 1], c))
 			res[idx++] = strsub(s + start, i - start);
-		else if (!s[i + 1] && !isSep(s[i], c))
+		else if (!s[i + 1] && !is_sep(s[i], c))
 			res[idx++] = strsub(s + start, i - start + 1);
 	}
 	res[idx] = 0;
