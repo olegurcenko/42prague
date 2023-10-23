@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 08:44:17 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/23 16:29:46 by oyurchen         ###   ########.fr       */
+/*   Created: 2023/10/16 11:29:00 by oyurchen          #+#    #+#             */
+/*   Updated: 2023/10/16 11:30:41 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char const *str)
+static int	ft_isalpha(char *str)
 {
-	int	i;
+	if ((*str >= 'a' && *str <= 'z')
+			|| (*str >= 'A' && *str <= 'Z'))
+		return (1);
+	else
+		return (0);
+}
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+static int	ft_isdigit(char *str)
+{
+		if (*str >= '0' && *str <= '9')
+			return (1);
+		else
+			return (0) ;
+}
+
+int	ft_isalnum(char *str)
+{
+	if ((ft_isalpha(str))
+			|| (ft_isdigit(str)))
+		return (1);
+	else
+		return (0);
 }

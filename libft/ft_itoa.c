@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 22:10:35 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/22 23:05:11 by oleg             ###   ########.fr       */
+/*   Updated: 2023/10/23 16:24:40 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static int	num_len(int n)
 	return (len);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char *res;
-	int 	last;
-	int len;
-	int neg;
+	char	*res;
+	int		last;
+	int		len;
+	int		neg;
 
 	neg = 0;
 	len = num_len(n);
@@ -46,7 +46,9 @@ char *ft_itoa(int n)
 		neg = 1;
 	}
 	res = malloc(sizeof(char) * (num_len(n) + 2));
-	res[len + 1] = '\0';
+	if (!res)
+		return (NULL);
+	res[len] = '\0';
 	len --;
 	while (n > 0 && len != -1)
 	{
@@ -55,17 +57,15 @@ char *ft_itoa(int n)
 	}
 	if (neg == 1)
 		res[len] = '-';
-		//printf("%d", 5);
 	return (res);
 }
 
-int main()
-{
-    char *a = ft_itoa(-123123123);
-    printf("%s\n", a);
+//int main()
+//{
+//    char *a = ft_itoa(-123123123);
+//    printf("%s\n", a);
 
-    // Don't forget to free the allocated memory
-    free(a);
+//    free(a);
 
-    return 0;
-}
+//    return 0;
+//}

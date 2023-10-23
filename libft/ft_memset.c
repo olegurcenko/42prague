@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 08:44:17 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/23 16:29:46 by oyurchen         ###   ########.fr       */
+/*   Created: 2023/10/16 12:10:46 by oyurchen          #+#    #+#             */
+/*   Updated: 2023/10/23 14:23:47 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char const *str)
-{
-	int	i;
+#include <stdio.h>
+#include <string.h>
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+void *ft_memset(char *str, int symbol, size_t bites)
+{
+	while (bites-- != 0)
+		*str++ = symbol;
+    return ((void *)str);
+}
+
+int main() {
+    char str[10];
+	int b = 5;
+
+    // Fill str with the ASCII value of 'A' (65)
+    ft_memset(str, 56, b);
+
+    // Print the result
+    printf("%s\n", str);
+
+    return 0;
 }
