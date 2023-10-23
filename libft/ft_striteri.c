@@ -6,7 +6,7 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 18:14:21 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/23 18:23:59 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:33:33 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int		len;
+	size_t	len;
 	size_t	i;
 
 	i = -1;

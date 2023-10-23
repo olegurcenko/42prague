@@ -6,7 +6,7 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:33:08 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/23 18:10:06 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:34:04 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void *ft_memchr(const void *str, int c, size_t n)
 {
-	int	i;
+	size_t	i;
 	
 	i = 0;
 	if (!str || c == 0 || !n)

@@ -6,7 +6,7 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:38:24 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/23 16:35:53 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:34:29 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 //}
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		len;
+	size_t	len;
 	size_t	i;
 	char	*res;
 
