@@ -1,6 +1,17 @@
 {
 	"files.associations": {
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"stdio.h": "c",
+		"libft.h": "c",
+		"string.h": "c",
+		"limits": "c",
+		"functional": "c",
+		"array": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"ranges": "c",
+		"span": "c",
+		"utility": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

@@ -6,7 +6,8 @@ ft_isalpha ft_isascii ft_isdigit ft_isprint \
 ft_memcpy ft_memmove ft_memset ft_strcat \
 ft_strlcpy ft_striteri ft_memchr ft_strrchr \
 ft_strchr ft_tolower ft_toupper ft_strncmp \
-ft_strlcat ft_strmapi 
+ft_strlcat ft_strmapi ft_memcmp ft_calloc \
+ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

@@ -6,24 +6,13 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:38:24 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/23 18:34:29 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:14:15 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-
-//int	ft_strlen(char const *str)
-//{
-//	int	i;
-
-//	i = 0;
-//	while (str[i] != '\0')
-//		i++;
-//	return (i);
-//}
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	size_t	len;
 	size_t	i;
@@ -39,13 +28,11 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	while (i != len)
 	{
 		res[i] = f(i, s[i]);
-		i++;	
+		i++;
 	}
 	res[i] = '\0';
 	return (res);
 }
-
-
 //char transformToUpper(unsigned int index, char c) {
 //    // Convert the character to uppercase
 //    if (c >= 'a' && c <= 'z') {
@@ -53,13 +40,10 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 //    }
 //    return c;
 //}
-
 //int main()
 //{
 //    char *a = ft_strmapi("hello how are you", transformToUpper);
 //    printf("%s", a);
-
 //    free(a);
-
 //    return 0;
 //}

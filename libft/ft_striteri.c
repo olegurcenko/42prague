@@ -6,24 +6,25 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 18:14:21 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/23 18:33:33 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:44:06 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-void ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	len;
-	size_t	i;
+	unsigned int	i;
 
-	i = -1;
 	if (!s || !f)
-		return;
-	len = ft_strlen(s);
-	while (i++ != len)
-		f(i, &s[i]);
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, s + i);
+		i++;
+	}
 }
 
 //void printCharWithIndex(unsigned int index, char *ch)

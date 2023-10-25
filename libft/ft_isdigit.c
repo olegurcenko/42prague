@@ -6,14 +6,11 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:16:13 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/16 11:37:17 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:07:43 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(char *str)
+int	ft_isdigit(int c)
 {
-		if (*str >= '0' && *str <= '9')
-			return (1);
-		else
-			return (0) ;
+	return (c >= '0' && c <= '9');
 }

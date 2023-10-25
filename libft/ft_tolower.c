@@ -6,11 +6,11 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:01:24 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/23 17:09:09 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:45:26 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char ft_tolower(char c)
+char	ft_tolower(char c)
 {
 	if (c <= 90 && c >= 65)
 		return (c + 32);

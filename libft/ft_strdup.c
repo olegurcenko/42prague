@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 11:29:00 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/24 19:12:24 by oyurchen         ###   ########.fr       */
+/*   Created: 2023/10/24 20:33:39 by oyurchen          #+#    #+#             */
+/*   Updated: 2023/10/24 22:42:15 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ft_isalnum(char c)
+char	*ft_strdup(const char *src)
 {
-	return (ft_isdigit(c) || ft_isalpha(c));
+	int		i;
+	int		len;
+	char	*ptr;
+
+	i = 0;
+	len = ft_strlen(src);
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (ptr == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		ptr[i] = src[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

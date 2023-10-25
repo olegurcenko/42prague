@@ -6,66 +6,52 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 22:10:35 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/23 16:24:40 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:04:36 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
 #include <stdlib.h>
 
-static int	num_len(int n)
+static size_t	get_digits(int n)
 {
-	int	len;
+	size_t	i;
 
-	len = 0;
-	if (n < 0)
-	{
-		n = -n;
-		len++;
-	}
-	while (n > 0)
+	i = 1;
+	while (n != 0)
 	{
 		n /= 10;
-		len ++;
+		if (n == 0)
+			return (i);
+		i++;
 	}
-	return (len);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*res;
-	int		last;
-	int		len;
-	int		neg;
+	char		*str_num;
+	size_t		digits;
+	long int	num;
 
-	neg = 0;
-	len = num_len(n);
+	num = n;
+	digits = get_digits(n);
 	if (n < 0)
 	{
-		n = -n;
-		neg = 1;
+		num *= -1;
+		digits++;
 	}
-	res = malloc(sizeof(char) * (num_len(n) + 2));
-	if (!res)
+	str_num = (char *)malloc(sizeof(char) * (digits + 1));
+	if (!str_num)
 		return (NULL);
-	res[len] = '\0';
-	len --;
-	while (n > 0 && len != -1)
+	*(str_num + digits) = 0;
+	while (digits--)
 	{
-		res[len--] = n % 10 + '0';
-		n /= 10;
+		*(str_num + digits) = num % 10 + '0';
+		num = num / 10;
 	}
-	if (neg == 1)
-		res[len] = '-';
-	return (res);
+	if (n < 0)
+		*(str_num + 0) = '-';
+	return (str_num);
 }
-
-//int main()
-//{
-//    char *a = ft_itoa(-123123123);
-//    printf("%s\n", a);
-
-//    free(a);
-
-//    return 0;
-//}

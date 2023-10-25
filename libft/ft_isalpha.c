@@ -5,16 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 23:49:28 by oyurchen            #+#    #+#             */
-/*   Updated: 2023/10/16 11:23:31 by oyurchen         ###   ########.fr       */
+/*   Created: 2021/01/09 23:49:28 by oyurchen          #+#    #+#             */
+/*   Updated: 2023/10/24 19:08:58 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char *str)
+#include "libft.h"
+
+int	ft_isalpha(int c)
 {
-	if ((*str >= 'a' && *str <= 'z')
-			|| (*str >= 'A' && *str <= 'Z'))
-		return (1);
-	else
-		return (0);
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

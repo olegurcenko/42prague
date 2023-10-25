@@ -3,46 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:23:46 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/21 22:47:17 by oleg             ###   ########.fr       */
+/*   Updated: 2023/10/25 14:42:41 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-static size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i + 1);
-}
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*result;
+	char	*new_str;
 	size_t	i;
+	size_t	j;
 
-	i = 0;
-	result = malloc((len + 1) * sizeof(char));
-	if ((result == NULL) || (start > ft_strlen(s)))
-	{
-		return (NULL);
-	}
-	while (s[start] != 0 && i != len)
-	{
-		result[i] = s[start];
-		i++;
-		start ++;
-	}
-	result[i] = 0;
-	return (result);
+	new_str = (char *)malloc(len + 1);
+	if (!s || !(new_str))
+		return (0);
+	i = start;
+	j = 0;
+	while (i < ft_strlen(s) && j < len)
+		new_str[j++] = s[i++];
+	new_str[j] = '\0';
+	return (new_str);
 }
 
 //int main()

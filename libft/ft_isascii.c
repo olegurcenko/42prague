@@ -6,29 +6,18 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:35:11 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/23 14:21:31 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:51:51 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-static int	helper_isascii(char *str)
+int	ft_isascii(int c)
 {
-	return ((unsigned char)*str <= 127);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }
-
-int	ft_isascii(char *str)
-{
-	while (*str != '\0')
-	{
-		if (!helper_isascii(str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-
 //int main() {
 //    char str1[] = "Hello123";
 //    char str2[] = "Non-ASCII: é";

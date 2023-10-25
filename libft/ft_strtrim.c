@@ -6,29 +6,21 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 21:56:51 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/23 13:49:20 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:03:47 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 static int	skip(char const *s1, char const *set)
 {
+	int	len;
 	int	i;
 
+	len = ft_strlen(s1);
 	i = 0;
-	while (s1[i] == *set)
-		i++;
-	return (i);
-}
-
-static int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	while (len > i && ft_strchr(set, s1[i]) != NULL)
 		i++;
 	return (i);
 }
@@ -38,12 +30,12 @@ static int	skip_end(char const *s1, char const *set)
 	int	len;
 	int	i;
 
+	len = ft_strlen(s1);
 	i = 0;
-	len = ft_strlen(s1) - 1;
-	while (len >= 0 && s1[len] == *set)
+	while (len > 0 && ft_strchr(set, s1[len - 1]) != NULL)
 	{
-		len --;
-		i ++;
+		len--;
+		i++;
 	}
 	return (i);
 }
@@ -56,7 +48,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	result_len = ft_strlen(s1) - skip(s1, set) - skip_end(s1, set);
 	if (result_len <= 0)
-		return (NULL);
+	{
+		result = malloc(1);
+		result[0] = '\0';
+		return (result);
+	}
 	i = 0;
 	result = malloc(result_len + 1);
 	if (result == NULL)
