@@ -11,7 +11,11 @@
 		"initializer_list": "c",
 		"ranges": "c",
 		"span": "c",
-		"utility": "c"
+		"utility": "c",
+		"deque": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"vector": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

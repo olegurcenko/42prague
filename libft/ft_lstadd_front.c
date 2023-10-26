@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 13:49:55 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/24 14:32:19 by oyurchen         ###   ########.fr       */
+/*   Created: 2023/10/26 15:19:19 by oyurchen          #+#    #+#             */
+/*   Updated: 2023/10/26 15:29:08 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
-{
-	char	*buffer;
+#include "libft.h"
 
-	buffer = dest;
-	while (*buffer != '\0')
-		buffer++;
-	while (*src != '\0')
-	{
-		*buffer = *src;
-		buffer++;
-		src++;
-	}
-	*buffer = '\0';
-	return (dest);
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (*lst)
+		new->next = *lst;
+	*lst = new;
 }
