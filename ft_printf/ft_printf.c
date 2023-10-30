@@ -6,31 +6,12 @@
 /*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 23:40:06 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/30 00:43:04 by oleg             ###   ########.fr       */
+/*   Updated: 2023/10/30 21:57:23 by oleg             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-static size_t	get_digits(int n)
-{
-	size_t	i;
-
-	i = 1;
-	while (n != 0)
-	{
-		n /= 10;
-		if (n == 0)
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
+#include "ft_printf.h"
 //char	*ft_itoa(int n)
 //{
 //	char		*str_num;
@@ -57,21 +38,14 @@ static size_t	get_digits(int n)
 //		*(str_num + 0) = '-';
 //	return (str_num);
 //}
-int ft_putstr(char *str)
-{
-	int i = 0;
-	//const char *c_value;
-	while(str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
-}
+
+
 
 int print_helper(va_list ap, const char str)
 {
+	unsigned int u_value = 0;
 	int value = 0;
+	int length = 0;
 	if (str == '%')
 	{
 		write(1, "%%", 1);
@@ -86,21 +60,27 @@ int print_helper(va_list ap, const char str)
 	else if (str == 's')
 	{
 		if (!str)
-		{
 			return (ft_putstr("(null)"));
-		}
 		else
-		{
 			return (ft_putstr(va_arg(ap, char *)));
-		}
 	}
-	else if (str == 'd')
+	else if (str == 'd' || str == 'i')
 	{
 		value = va_arg(ap, int);
 		char *c_value = ft_itoa(value);
-		ft_putstr(c_value);
+		length = ft_putstr(c_value);
 		free(c_value);
-		
+		return (length);
+	}
+	else if (str == 'p')
+		length += ft_print_pointer(va_arg(ap, unsigned long long int));
+	else if (str == 'u')
+	{
+		u_value = va_arg(ap, unsigned int);
+		char *c_value = ft_unsigned_itoa(u_value);
+		length = ft_putstr(c_value);
+		free(c_value);
+		return (length);
 	}
 	return (0);
 }
@@ -130,7 +110,8 @@ int ft_printf(const char *str, ...)
 
 int main()
 {
-	printf("hello %c %s %d\n", 'g', "hello",  2147483647);
-	ft_printf("hello %c %s %d\n", 'g', "hello",  2147483647);
+	int a = 5;
+	printf("hello %c %s %d %p %lu\n", 'g', "hello",  2147483647, &a, 4294967295);
+	ft_printf("hello %c %s %d %p %u\n", 'g', "hello",  2147483647, &a, 4294967295);
 	return (0);
 }
