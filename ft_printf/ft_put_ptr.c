@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_ptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oleg <oleg@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:53:45 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/30 21:53:59 by oleg             ###   ########.fr       */
+/*   Updated: 2023/10/31 16:27:29 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "../libft/libft.h"
 
 void	ft_put_ptr(unsigned long long num)
 {

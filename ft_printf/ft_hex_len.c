@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_hex_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 21:51:40 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/31 16:31:50 by oyurchen         ###   ########.fr       */
+/*   Created: 2023/10/31 16:13:33 by oyurchen          #+#    #+#             */
+/*   Updated: 2023/10/31 16:32:40 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_hex_len(unsigned int hex)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (str[i])
+	len = 0;
+	while (hex)
 	{
-		write(1, &str[i], 1);
-		i++;
+		len ++;
+		hex /= 16;
 	}
-	return (i);
+	return (len);
 }
