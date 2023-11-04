@@ -6,7 +6,7 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:53:45 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/31 16:27:29 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:24:09 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_put_ptr(unsigned long long num)
 	else
 	{
 		if (num <= 9)
-			ft_putchar_fd((num + '0'), 1);
+			ft_putchar((num + '0'));
 		else
-			ft_putchar_fd((num - 10 + 'a'), 1);
+			ft_putchar((num - 10 + 'a'));
 	}
 }

@@ -7,7 +7,9 @@ ARFLAGS 		=	rcs
 RM				=	rm -rf
 
 SRC				=	ft_printf ft_hex_len ft_put_hex ft_put_ptr pointer_length\
-					ft_putstr ft_unsigned_itoa get_digits get_unsigned_digits\
+					ft_putstr ft_unsigned_itoa get_digits get_unsigned_digits ft_itoa\
+
+#ft_printf.c ft_hex_len.c ft_put_hex.c ft_put_ptr.c pointer_length.c ft_putstr.c ft_unsigned_itoa.c get_digits.c get_unsigned_digits.c ft_itoa.c
 
 
 SRCS 			=	$(addsuffix .c, $(SRC))

@@ -6,21 +6,25 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:13:33 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/31 16:32:40 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:39:37 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hex_len(unsigned int hex)
+int	ft_hex_len(unsigned long int hex)
 {
-	int	len;
+	int len = 0;
 
-	len = 0;
-	while (hex)
+	if (hex == 0)
+		len = 1;
+	else
 	{
-		len ++;
-		hex /= 16;
+		while (hex != 0)
+		{
+			len++;
+			hex /= 16;
+		}
 	}
 	return (len);
 }

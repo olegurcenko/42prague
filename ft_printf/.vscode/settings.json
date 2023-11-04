@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"unistd.h": "c",
+		"ft_printf.h": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"algorithm": "c",
+		"libft.h": "c"
+	}
+}

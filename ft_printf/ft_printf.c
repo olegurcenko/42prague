@@ -6,7 +6,7 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 23:40:06 by oleg              #+#    #+#             */
-/*   Updated: 2023/10/31 17:29:13 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:41:57 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	print_pointer(unsigned long long num)
 	int					length;
 
 	length = 0;
-	length += write(1, "0x", 2);
 	if (!num)
 	{
-		length += write(1, "0", 1);
+		length += write(1, "(nil)", 5);
 	}
 	else
 	{
+		length += write(1, "0x", 2);
 		ft_put_ptr(num);
 		length += pointer_length(num);
 	}
@@ -60,7 +60,7 @@ int	print_helper_p2(va_list ap, const char str)
 	{
 		value = va_arg(ap, int);
 		c_value = ft_itoa(value);
-		length = ft_putstr(c_value);
+		length = ft_printstr(c_value);
 		free(c_value);
 	}
 	else if (str == 'p')
@@ -69,8 +69,14 @@ int	print_helper_p2(va_list ap, const char str)
 	{
 		u_value = va_arg(ap, unsigned int);
 		c_value = ft_unsigned_itoa(u_value);
-		length = ft_putstr(c_value);
+		length = ft_printstr(c_value);
 		free(c_value);
+	}
+	else if (str == 'x' || str == 'X')
+	{
+		u_value = va_arg(ap, unsigned long int);
+		length += ft_hex_len(u_value);
+		ft_put_hex(u_value, str);
 	}
 	return (length);
 }
@@ -93,10 +99,7 @@ int	print_helper_p1(va_list ap, const char str)
 	}
 	else if (str == 's')
 	{
-		if (!str)
-			return (ft_putstr("(null)"));
-		else
-			return (ft_putstr(va_arg(ap, char *)));
+	    length += ft_printstr(va_arg(ap, char *));
 	}
 	return (length);
 }
@@ -115,12 +118,13 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			length += (print_helper_p1(ap, str[i])
-					|| print_helper_p2(ap, str[i]));
+			length += print_helper_p1(ap, str[i]);
+			length += print_helper_p2(ap, str[i]);
 		}
 		else
 		{
-			length += write(1, &str[i], 1);
+			write(1, &str[i], 1);
+			length++;
 		}
 		i++;
 	}
@@ -130,10 +134,24 @@ int	ft_printf(const char *str, ...)
 
 //int main()
 //{
-//	int a = 5;
-//	printf("%c %s %d %p %lu %% %i\n", 'g', "hello",  
-//2147483647, &a, 4294967295, 2147483647);
-//	ft_printf("%c %s %d %p %u %% %i\n", 'g', "hello",  
-//2147483647, &a, 4294967295, 2147483647);
+////	int a = 5;
+////	printf("%c %s %d %p %lu %% %i\n", 'g', "hello",  
+////2147483647, &a, 4294967295, 2147483647);
+////	ft_printf("%c %s %d %p %u %% %i\n", 'g', "hello",  
+////2147483647, &a, 4294967295, 2147483647);
+//	//char *s2 = "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus.";
+	
+//	////ft_printf(" %s %s ", " - ", "");
+//	////printf(".\n");
+//	////printf(" %s %s ", " - ", "");
+//	////int c = ft_printf(" %s %s %s %s ", " - ", "", "4", "");
+//	//int c = ft_printf(" %s %s %s %s ", " - ", "", "4", s2);
+//	//printf("\n");
+//	//int g = printf(" %s %s %s %s ", " - ", "", "4", s2);
+//	int a = ft_printf(" %x ", 0);
+//	printf("\n");
+//	int b = printf(" %x ", 0);
+//	printf("\n");
+//	printf("%d %d", a, b);
 //	return (0);
 //}

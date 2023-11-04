@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 21:51:40 by oleg              #+#    #+#             */
-/*   Updated: 2023/11/03 17:38:18 by oyurchen         ###   ########.fr       */
+/*   Created: 2023/10/22 22:10:35 by oleg              #+#    #+#             */
+/*   Updated: 2023/11/03 16:10:43 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *str)
+char	*ft_itoa(int n)
 {
-	int	i;
+	char		*str_num;
+	size_t		digits;
+	long int	num;
 
-	i = 0;
-	while (str[i])
+	num = n;
+	digits = get_digits(n);
+	if (n < 0)
 	{
-		write(1, &str[i], 1);
-		i++;
+		num *= -1;
+		digits++;
 	}
-}
-
-int	ft_printstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
+	str_num = (char *)malloc(sizeof(char) * (digits + 1));
+	if (!str_num)
+		return (NULL);
+	*(str_num + digits) = 0;
+	while (digits--)
 	{
-		ft_putstr("(null)");
-		return (6);
+		*(str_num + digits) = num % 10 + '0';
+		num = num / 10;
 	}
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
+	if (n < 0)
+		*(str_num + 0) = '-';
+	return (str_num);
 }

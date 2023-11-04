@@ -6,14 +6,19 @@
 /*   By: oyurchen <oyurchen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:05:26 by oyurchen          #+#    #+#             */
-/*   Updated: 2023/10/31 17:29:45 by oyurchen         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:34:06 by oyurchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-void	ft_put_hex(unsigned int nbr, const char format)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_put_hex(unsigned long int nbr, const char format)
 {
 	if (nbr >= 16)
 	{
@@ -23,13 +28,13 @@ void	ft_put_hex(unsigned int nbr, const char format)
 	else
 	{
 		if (nbr <= 9)
-			ft_putchar_fd((nbr + '0'), 1);
+			ft_putchar((nbr + '0'));
 		else
 		{
 			if (format == 'x')
-				ft_putchar_fd(nbr - 10 + 'a', 1);
+				ft_putchar(nbr - 10 + 'a');
 			else if (format == 'X')
-				ft_putchar_fd(nbr - 10 + 'A', 1);
+				ft_putchar(nbr - 10 + 'A');
 		}
 	}
 }
